@@ -10,7 +10,7 @@ const App = () => {
 
   const fetchWeatherByCoords = async (lat, lon, cityName, countryCode) => {
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=th`;
-
+    console.log(countryCode)
     try {
       const res = await fetch(weatherUrl);
       const result = await res.json();
@@ -25,6 +25,7 @@ const App = () => {
     } catch (error) {
       setData(null);
       alert("เกิดข้อผิดพลาดในการเชื่อมต่อ.");
+      console.log("Fetch Error: ", error.message)
     } finally {
       setLoading(false);
     }
@@ -49,6 +50,7 @@ const App = () => {
     } catch (error) {
       setData(null);
       alert("เกิดข้อผิดพลาดในการเชื่อมต่อ Geocoding.");
+      console.log("Fetch Error: ", error.message)
       setLoading(false);
     }
   };
